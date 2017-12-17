@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app="QualPrixSolApp"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="keywords"
+	content="html template, css, one page, gym, fitness, web design" />
+<meta name="author" content="Nguematsia Albert Merlin" />
+
+<title>{{Titre}}</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../css/contacts/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="../css/contacts/freelancer.min.css" rel="stylesheet">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<link rel="stylesheet" href="../css/loginPage/loginPageCss.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Scripts -->
+<script src="../js/services/labelQualPrixSol.js"></script>
+<script src="../js/services/pagesNavigation.js"></script>
+<script src="../js/module/QualPrixSolApp.js"></script>
+<script src="../js/controleurs/CtrlLoginPage.js"></script>
+
+</head>
+
+<body ng_controller="LoginPageCtrl">
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top"
+		id="mainNav">
+		<div class="container-fluid">
+			<h4>
+				<button type="button" class="btn btn-primary" data-toggle="modal"
+					data-target="#login" data-whatever="@mdo">Login</button>
+				|
+				<button type="button" class="btn btn-primary" data-toggle="modal"
+					data-target="#register" data-whatever="@fat">Register</button>
+			</h4>
+			<div class="ng-view"></div>
+		</div>
+	</nav>
+	<section>
+		<!-- form for login -->
+		<div class="modal fade" id="login" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">{{SousTitre}}
+							&nbsp inscription</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<form>
+						<div class="modal-body">
+
+							<div class="form-group">
+								<label for="recipient-name" class="form-control-label">Login:</label>
+								<input type="text" class="form-control" id="ancienLogin"
+									placeholder="insere votre login">
+							</div>
+							<div class="form-group">
+								<label for="recipient-name" class="form-control-label">Password:</label>
+								<input type="text" class="form-control" id="ancienPassword"
+									placeholder="inserer votre password">
+							</div>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">
+								<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+								Close
+							</button>
+							<button type="button" class="btn btn-success">
+								<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
+								Send
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--  form pour la registration  -->
+		<div class="modal fade" id="register" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">{{SousTitre}}
+							&nbsp inscription</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<form data-toggle="validator" role="form"  method="post">
+						<div class="modal-body">
+							<div class="form-group">
+								<label for="inputFirstName" class="control-label">First
+									Name</label> <input type="text" class="form-control"
+									id="inputFirstName" placeholder="Insert your First Name"
+									ng-model="firstname" required>
+							</div>
+							<div class="form-group">
+								<label for="inputLastName" class="control-label">Last
+									Name</label> <input type="text" class="form-control" id="inputLastName"
+									placeholder="Insert your Last Name" ng-model="lastName"
+									required>
+							</div>
+							<div class="form-group">
+								<label for="inputBirthDay" class="control-label">Birth
+									Day</label> <input type="date" class="form-control" id="inputBirthDay"
+									placeholder="Insert your birth day" ng-model="birthday"
+									required>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail" class="control-label">Email</label> <input
+									type="email" class="form-control" id="inputEmail"
+									placeholder="Email"
+									data-error="Bruh, that email address is invalid"
+									ng-model="email" required>
+								<div class="help-block with-errors"></div>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail" class="control-label">Phone
+									number</label> <input type="number" class="form-control"
+									id="inputPhoneNomber"
+									placeholder="Insert your Phone Number here"
+									ng-model="phoneNumber" required>
+							</div>
+							<div class="form-group">
+								<label for="inputLogin" class="control-label">Login</label> <input
+									type="text" class="form-control" id="inputLogin"
+									placeholder="Insert your new Login" ng-model="login"
+									required>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword" class="control-label">Password</label>
+								<div class="form-inline row">
+									<div class="form-group col-sm-6 col-lg-6">
+										<input type="password" data-minlength="6" class="form-control"
+											id="inputPassword" placeholder="Password"
+											ng-model="password" required>
+										<div class="help-block">Minimum of 6 characters</div>
+									</div>
+									<div class="form-group col-sm-6 col-lg-6">
+										<input type="password" class="form-control"
+											id="inputPasswordConfirm" data-match="#inputPassword"
+											data-match-error="Whoops, these don't match"
+											placeholder="Confirm" required>
+										<div class="help-block with-errors">&nbsp</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputCountry" class="control-label">Country</label>
+								<input type="text" class="form-control" id="inputCountry"
+									placeholder="Insert your country" ng-model="country"
+									required>
+							</div>
+							<div class="form-group">
+								<label for="inputCity" class="control-label">City</label> <input
+									type="text" class="form-control" id="inputCity"
+									placeholder="Insert your City" ng-model="city" required>
+							</div>
+							<div class="form-group">
+								<label for="inputCodePostal" class="control-label">Code
+									Postal</label> <input type="text" class="form-control"
+									id="inputCodePostal" placeholder="Insert your postal code"
+									ng-model="codePostal" required>
+							</div>
+							<div class="form-group">
+								<label for="inputStreet" class="control-label">Street</label> <input
+									type="text" class="form-control" id="inputLogin"
+									placeholder="Insert your street" ng-model="street" required>
+							</div>
+							<div class="form-group">
+								<label for="inputStreetNumber" class="control-label">Street
+									Number</label> <input type="number" class="form-control"
+									id="inputStreetNumber" placeholder="Insert your street number"
+									ng-model="streetNumber" required>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">
+								<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+								Close
+							</button>
+							<button type="submit" ng-click="sendInfoPersonne()" class="btn btn-success">
+								<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
+								Send
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
